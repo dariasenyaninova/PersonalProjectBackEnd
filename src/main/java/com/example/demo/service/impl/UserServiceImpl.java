@@ -23,16 +23,6 @@ public class UserServiceImpl implements UserService {
     private SessionRepository sessionRepository;
     private ShoppingCartRepo shoppingCartRepo;
     @Override
-    public List<User> findAllUsers() {
-        return usersRepository.findAll();
-    }
-
-    @Override
-    public User findUserByEmail(String email) {
-        return usersRepository.findById(email).orElse(null);
-    }
-
-    @Override
     public boolean registration(User user) {
         if (usersRepository.existsById(user.getEmail())) {
             return false;
