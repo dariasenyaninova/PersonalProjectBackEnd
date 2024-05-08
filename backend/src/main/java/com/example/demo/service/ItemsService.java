@@ -1,17 +1,36 @@
 package com.example.demo.service;
 
 import com.example.demo.model.Item;
+import com.example.demo.repository.ItemRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public interface ItemsService {
+@Service
+@AllArgsConstructor
+public class ItemsService  {
+    private ItemRepository repository;
 
-    List<Item> findAllItems();
-    Item findItemById(Long id);
-    Item saveItem(Item item);
-    Item updateItem(Item item);
-    void deleteItemById(Long id);
+    public List<Item> findAllItems() {
+        return repository.findAll();
+    }
 
 
+    public Item findItemById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+
+    public Item saveItem(Item item) {
+        return repository.save(item);
+    }
+
+    public Item updateItem(Item item) {
+        return repository.save(item);
+    }
+
+    public void deleteItemById(Long id) {
+        repository.deleteById(id);
+    }
 }

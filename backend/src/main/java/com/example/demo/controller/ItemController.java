@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.model.Item;
-import com.example.demo.model.User;
 import com.example.demo.service.ItemsService;
-import com.example.demo.service.ShoppingCartService;
-import com.example.demo.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,7 +18,7 @@ public class ItemController {
         return "Welcome to candle shop!";
     }
 
-    @GetMapping("allItems")
+    @GetMapping("all-items")
     public List<Item> findAllItems() {
         return shopService.findAllItems();
     }
@@ -31,17 +28,17 @@ public class ItemController {
         return shopService.findItemById(id);
     }
 
-    @PostMapping("saveItems")
+    @PostMapping("save-items")
     public Item saveItem(@RequestBody Item item) {
         return shopService.saveItem(item);
     }
 
-    @PostMapping("editItem")
+    @PostMapping("edit-item")
     public Item updateItem(@RequestBody Item item) {
         return shopService.updateItem(item);
     }
 
-    @DeleteMapping("deleteItem/{id}")
+    @DeleteMapping("delete-item/{id}")
     public void deleteItemById(@PathVariable Long id) {
         shopService.deleteItemById(id);
     }

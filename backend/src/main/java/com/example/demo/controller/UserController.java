@@ -23,8 +23,8 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/deleteUser")
-    public String deleteUserById(@RequestParam String token){
+    @DeleteMapping("/delete-user")
+    public String deleteUserById(@RequestBody String token){
         boolean deleted = userService.deleteUser(token);
         if(deleted){
             return "User deleted";
@@ -39,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/logout")
-    public String logout(@RequestParam String token){
+    public String logout(@RequestBody String token){
         boolean logout = userService.logout(token);
         if(logout){
             return "You successfully logged out";
